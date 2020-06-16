@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>Boolzapp</title>
   </head>
@@ -18,24 +19,59 @@
       <div class="container">
 
         <!-- ________ HEADER ________ -->
-        <header>
-          <nav class="contact nav-contact">
+        <header class="flex">
+          <!-- NAV-CONTACT -->
+          <nav class="contact nav-contact flex">
+
+            <!-- Profile Picture -->
+            <div class="profile-picture">
+              <img src="img/avatar_io.jpg" alt="Profile picture">
+            </div>
+
+            <!-- Settings -->
+            <div class="settings">
+              <ul class="menu-icons">
+                <li><a href="#"><i class="fas fa-circle-notch"></i></a></li>
+                <li><a href="#"><i class="fas fa-comment-alt"></i></a></li>
+                <li><a href="#"><i class="fas fa-ellipsis-v"></i></a></li>
+              </ul>
+            </div>
 
           </nav>
 
+          <!-- NAV-CHAT -->
           <nav class="chat nav-chat">
+
+            <!-- Profile Picture -->
+
+            <!-- Settings -->
 
           </nav>
         </header>
 
         <!-- ________ MAIN ________ -->
-        <main>
+        <main class="flex">
+          <!-- SECTION-CONTACT -->
           <section id="contact" class="contact section-contact">
-            <div class="notice">
+
+            <!-- Notifications -->
+            <div class="notifications flex">
+              <!-- mute -->
+              <div class="mute">
+                <i class="fas fa-bell-slash"></i>
+              </div>
+
+              <!-- receive -->
+              <div class="receive">
+                <p>Ricevi notifiche di nuovo messaggi</p>
+                <a href="#">Attiva notifiche desktop</a>
+              </div>
 
             </div>
+
           </section>
 
+          <!-- SECTION-CHAT -->
           <section id="chat" class="chat section-chat">
 
           </section>
