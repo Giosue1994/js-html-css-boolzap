@@ -53,58 +53,60 @@ a {
 }
 /* ________ HEADER ________ */
 header {
-  height: 100px;
+  height: 80px;
   background-color: #e9e9e9;
 }
 
-/* Nav-Contact */
+/* NAV CONTACT */
 .nav-contact {
-  padding: 20px 10px;
+  padding: 10px 10px;
   justify-content: space-between;
 }
 
+/* Profile Picture */
 .nav-contact .profile-picture {
   height: 100%;
 }
 
+/* Settings */
 .nav-contact .settings {
   height: 100%;
 }
-
 .nav-contact .settings .menu-icons li {
   display: inline-block;
   font-size: 25px;
   margin-right: 20px;
-  line-height: 2.5;
+  line-height: 2.6;
 }
 .nav-contact .settings .menu-icons li a {
   color: #b0b0b0;
 }
 
-/* Nav-Chat */
+/* NAV CHAT */
 .nav-chat {
 
 }
 
 /* ________ MAIN ________ */
 main {
-  height: calc(100% - 200px);
+  height: calc(100% - 160px);
 }
 
-/* Section Contact */
+/* SECTION CONTACT */
 .section-contact {
-  height: calc(100% + 100px);
+  height: calc(100% + 80px);
   background-color: white;
 }
 
+/* Notifications */
 .section-contact .notifications {
-  height: 110px;
+  height: 100px;
   width: 100%;
   background-color: #6edafd;
   padding: 30px;
   align-items: center;
 }
-
+/* mute */
 .section-contact .notifications .mute i {
   background-color: white;
   border-radius: 50%;
@@ -116,11 +118,39 @@ main {
   text-align: center;
   line-height: 2.5;
 }
-
+/* receive */
 .section-contact .notifications .receive a {
   font-size: 16px;
   color: #467b8d;
   text-decoration: underline;
+}
+
+/* Search Bar */
+.search-bar {
+  background-color: #fafafa;
+  padding: 10px;
+}
+.search-bar .search-or-start {
+  background-color: white;
+  padding: 3px 0;
+}
+.search-bar .search-or-start a {
+  font-size: 25px;
+  vertical-align: middle;
+  margin: 0 15px;
+  color: #b0b0b0;
+  align-self: center;
+}
+.search-bar .search-or-start input {
+  font-size: 16px;
+  padding: 10px 15px;
+  border:none;
+  box-shadow: none;
+  outline-color: #6edafd;;
+  background-color:transparent;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  color: #7d7d7d;
 }
 
 /* Section Chat */
@@ -129,6 +159,6 @@ main {
 }
 /* ________ FOOTER ________ */
 footer {
-  height: 100px;
+  height: 80px;
   background-color: #f4ede9;
 }
