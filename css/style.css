@@ -20,12 +20,50 @@
   position: relative;
   top: 5vh;
   height: 90vh;
-  max-width: 900px;
+  width: 80%;
   margin: auto;
 }
 
 /* ________ HEADER ________ */
+header {
+  height: 100px;
+  background-color: yellow;
+}
+
+/* Nav-Contact */
+.nav-contact {
+  height: 100%;
+  width: 30%;
+  background-color: goldenrod;
+}
+/* Nav-Chat */
+.nav-chat {
+  height: 100%;
+  width: 70%;
+  background-color: darkgoldenrod;
+}
 
 /* ________ MAIN ________ */
+main {
+  height: calc(100% - 200px);
+  background-color: orange;
+  display: flex;
+}
+/* Contact */
+.contact {
+  height: calc(100% + 100px);
+  width: 30%;
+  background-color: lightblue;
+}
 
+/* Chat */
+.chat {
+  height: 100%;
+  width: 70%;
+  background-color: lightgreen;
+}
 /* ________ FOOTER ________ */
+footer {
+  height: 100px;
+  background-color: green;
+}
