@@ -21,7 +21,7 @@
         <!-- ________ HEADER ________ -->
         <header class="flex">
           <!-- NAV-CONTACT -->
-          <nav class="contact nav-contact flex">
+          <nav class="contact nav nav-contact flex">
 
             <!-- Profile Picture -->
             <div class="profile-picture">
@@ -40,11 +40,24 @@
           </nav>
 
           <!-- NAV-CHAT -->
-          <nav class="chat nav-chat">
+          <nav class="chat nav nav-chat flex">
 
             <!-- Profile Picture -->
+            <div class="profile-picture">
+              <!-- immagine uguale al contatto selezionato -->
+              <img src="img/avatar_1.jpg" alt="Profile picture">
+              <span class="name"> Michele<!-- nome uguale al contatto selezionato --> </span>
+              <span class="description">Ultimo accesso oggi alle 18:39</span>
+            </div>
 
             <!-- Settings -->
+            <div class="settings">
+              <ul class="menu-icons">
+                <li><a href="#"><i class="fas fa-search"></i></a></li>
+                <li><a href="#"><i class="fas fa-paperclip"></i></a></li>
+                <li><a href="#"><i class="fas fa-ellipsis-v"></i></a></li>
+              </ul>
+            </div>
 
           </nav>
         </header>
@@ -78,24 +91,99 @@
               </div>
             </div>
 
-            <ul class="contact-name">
-              <li>
-                <a href="#">
+            <!-- Contact Name -->
+            <div class="contact-name">
+              <ul>
 
+                <a href="#">
+                  <li class="active">
+                    <img src="img/avatar_1.jpg" alt="Profile picture">
+                    <span class="name">Michele</span>
+                    <span>Non poteva essere altrimenti</span>
+                  </li>
                 </a>
-              </li>
-            </ul>
+
+                <a href="#">
+                  <li>
+                    <img src="img/avatar_2.jpg" alt="Profile picture">
+                    <span class="name">Fabio</span>
+                    <span>Non poteva essere altrimenti</span>
+                  </li>
+                </a>
+
+                <a href="#">
+                  <li>
+                    <img src="img/avatar_3.jpg" alt="Profile picture">
+                    <span class="name">Samuele</span>
+                    <span>Non poteva essere altrimenti</span>
+                  </li>
+                </a>
+
+                <a href="#">
+                  <li>
+                    <img src="img/avatar_4.jpg" alt="Profile picture">
+                    <span class="name">Alessandro B.</span>
+                    <span>Non poteva essere altrimenti</span>
+                  </li>
+                </a>
+
+                <a href="#">
+                  <li>
+                    <img src="img/avatar_5.jpg" alt="Profile picture">
+                    <span class="name">Alessandro L.</span>
+                    <span>Non poteva essere altrimenti</span>
+                  </li>
+                </a>
+
+                <a href="#">
+                  <li>
+                    <img src="img/avatar_6.jpg" alt="Profile picture">
+                    <span class="name">Claudia</span>
+                    <span>Non poteva essere altrimenti</span>
+                  </li>
+                </a>
+
+                <a href="#">
+                  <li>
+                    <img src="img/avatar_7.jpg" alt="Profile picture">
+                    <span class="name">Davide</span>
+                    <span>Non poteva essere altrimenti</span>
+                  </li>
+                </a>
+
+                <a href="#">
+                  <li>
+                    <img src="img/avatar_8.jpg" alt="Profile picture">
+                    <span class="name">Federico</span>
+                    <span>Non poteva essere altrimenti</span>
+                  </li>
+                </a>
+
+              </ul>
+            </div>
           </section>
 
           <!-- SECTION-CHAT -->
           <section id="chat" class="chat section-chat">
+            <ul>
 
+            </ul>
+
+            <div class="template">
+              <li class="your-message float-right"></li>
+            </div>
           </section>
+
+
         </main>
 
         <!-- ________ FOOTER ________ -->
-        <footer>
-
+        <footer class="flex">
+          <a href="#"><i class="far fa-smile"></i></i></a>
+          <div class="write-message">
+            <input type="text" placeholder="Scrivi un messaggio">
+          </div>
+          <a class="send "href="#"><i class="fas fa-microphone"></i></a>
         </footer>
 
       </div>

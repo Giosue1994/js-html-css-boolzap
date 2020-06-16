@@ -39,9 +39,19 @@
   width: 70%;
 }
 
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
 img {
   height: 100%;
   border-radius: 50%;
+  float: left;
+  margin-right: 20px;
 }
 
 ul {
@@ -57,34 +67,41 @@ header {
   background-color: #e9e9e9;
 }
 
-/* NAV CONTACT */
-.nav-contact {
+/* NAV CONTACT */ /* NAV CHAT */
+.nav {
   padding: 10px 10px;
   justify-content: space-between;
 }
 
 /* Profile Picture */
-.nav-contact .profile-picture {
+.nav .profile-picture {
   height: 100%;
+  width: 50%;
+  line-height: 1.5;
 }
 
 /* Settings */
-.nav-contact .settings {
+.navt .settings {
   height: 100%;
+  width: 50%;
 }
-.nav-contact .settings .menu-icons li {
+.nav .settings .menu-icons li {
   display: inline-block;
   font-size: 25px;
   margin-right: 20px;
   line-height: 2.6;
 }
-.nav-contact .settings .menu-icons li a {
+.nav .settings .menu-icons li a {
   color: #b0b0b0;
 }
 
-/* NAV CHAT */
-.nav-chat {
-
+.nav-chat .name {
+  font-size: 20px;
+  color: black;
+}
+.nav-chat .description {
+  display: block;
+  color: #7d7d7d;
 }
 
 /* ________ MAIN ________ */
@@ -122,26 +139,27 @@ main {
 .section-contact .notifications .receive a {
   font-size: 16px;
   color: #467b8d;
+}
+.section-contact .notifications .receive a:hover {
   text-decoration: underline;
 }
 
 /* Search Bar */
-.search-bar {
+.section-contact .search-bar {
   background-color: #fafafa;
   padding: 10px;
 }
-.search-bar .search-or-start {
+.section-contact .search-bar .search-or-start {
   background-color: white;
-  padding: 3px 0;
 }
-.search-bar .search-or-start a {
+.section-contact .search-bar .search-or-start a {
   font-size: 25px;
   vertical-align: middle;
   margin: 0 15px;
   color: #b0b0b0;
   align-self: center;
 }
-.search-bar .search-or-start input {
+.section-contact .search-bar .search-or-start input {
   font-size: 16px;
   padding: 10px 15px;
   border:none;
@@ -153,12 +171,90 @@ main {
   color: #7d7d7d;
 }
 
-/* Section Chat */
+/* Contact Name */
+.section-contact .contact-name {
+  overflow-y: auto;
+  height: calc(100% - 160px);
+}
+
+.section-contact .contact-name li.active {
+  background-color: #e8eaea;
+}
+.section-contact .contact-name li {
+  height: 100px;
+  padding: 20px;
+  border-bottom: 1px solid #d5d5d5;
+  background-color: white;
+}
+.section-contact .contact-name span {
+  padding-top: 5px;
+  display: block;
+  color: #a3a3a3;
+}
+.section-contact .contact-name .name {
+  position: relative;
+  font-size: 20px;
+  color: black;
+}
+.section-contact .contact-name .name::after {
+  content: '17:53';
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 15px;
+  color: #a3a3a3;
+}
+
+/* SECTION CHAT */
 .section-chat {
   background-image: url(../img/mine.jpg);
 }
+
+.template {
+  display: none;
+}
+
+.your-message {
+  background: #cdfab7;
+  width: 200px;
+  margin: 50px;
+  padding: 20px;
+  border-radius: 10px;
+  display: block;
+}
+
 /* ________ FOOTER ________ */
 footer {
   height: 80px;
   background-color: #f4ede9;
+  width: calc(100% - 30%);
+  margin-left: 30%;
+  align-items: center;
+}
+
+footer a {
+  font-size: 25px;
+  vertical-align: middle;
+  margin: 0 30px;
+  color: #b0b0b0;
+}
+
+.write-message {
+  width: 100%;
+}
+
+.write-message input {
+  font-size: 16px;
+  padding: 20px 15px;
+  border:none;
+  box-shadow: none;
+  outline-color: #6edafd;;
+  background-color: white;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  color: #7d7d7d;
+  border-radius: 5px;
+}
+.write-message input::placeholder {
+  color: #a3a3a3;
 }
