@@ -8,7 +8,7 @@
 /* ________ REGOLE GENERALI ________ */
 /* WRAPPER */
 .wrapper {
-  background: linear-gradient(180deg, #009688 12%, #d8dbd5 12%);
+  background: linear-gradient(180deg, #2e4953 12%, #153a49 12%);
   height: 100vh;
   width: 100%;
   font-family: 'Roboto', sans-serif;
@@ -178,34 +178,47 @@ main {
 /* Contact Name */
 .section-contact .contact-name {
   overflow-y: auto;
-  height: 100%;
-  height: calc(100% - 160px);
-}
-
-.section-contact .contact-name li.active {
+  height: calc(100% - 159px);
   background-color: #1c2c32;
 }
-.section-contact .contact-name li {
-  height: 100px;
-  padding: 20px;
+
+.section-contact .contact-name .chat-contact {
   border-bottom: 1px solid #323232;
+  padding: 0 15px;
+  justify-content: space-between;
   background-color: #0b1d24;
 }
-.section-contact .contact-name span {
-  padding-top: 5px;
-  display: block;
-  color: #a3a3a3;
+.section-contact .contact-name .chat-contact.active {
+  background-color: #1c2c32;
 }
-.section-contact .contact-name .name {
+
+.section-contact .contact-name .profile-picture {
+  height: 100px;
+  padding: 15px 10px;
+}
+
+.section-contact .contact-name .text {
+  padding: 20px 20px 20px 0;
+  flex-grow: 1;
+}
+.section-contact .contact-name .text .name {
   position: relative;
   font-size: 20px;
-  color: #d4d5d7;
+  color: #a3a3a3;
 }
-.section-contact .contact-name .name::after {
-  content: '17:53';
+.section-contact .contact-name .text .description {
+  padding-top: 5px;
+  display: block;
+  color: #7d7d7d;
+}
+
+.section-contact .contact-name .hour {
+  position: relative;
+}
+.section-contact .contact-name .hour span {
   position: absolute;
   right: 0;
-  top: 0;
+  top: 20%;
   font-size: 15px;
   color: #a3a3a3;
 }
@@ -223,6 +236,7 @@ main {
   padding: 40px 80px;
 }
 
+/* TEMPLATE */
 .template {
   display: none;
 }
@@ -230,9 +244,9 @@ main {
 .message {
   position: relative;
   max-width: 60%;
-  min-width: 150px;
+  min-width: 50px;
   display: inline-block;
-  padding: 10px 60px 10px 20px;
+  padding: 10px 10px 10px 20px;
   margin-top: 5px;
   border-radius: 10px;
   word-break: break-all;
@@ -250,12 +264,20 @@ main {
 }
 
 .message-time {
-  position: absolute;
-  right: 10px;
-  bottom: 5px;
+  position: relative;
+  right: 0;
+  bottom: -7px;
   font-size: 12px;
   color: #a3a3a3;
-  padding-left: 10px;
+  padding: 0 10px;
+}
+
+.message-info {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  font-size: 23px;
+  color: #a3a3a3;
 }
 
 /* ________ FOOTER ________ */

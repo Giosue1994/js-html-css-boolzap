@@ -8,7 +8,9 @@ $(document).ready(function() {
       $('.send-button i').removeClass('fas fa-microphone');
       $('.send-button i').addClass('fab fa-telegram-plane');
       sendMessage();
-
+      setTimeout(function() {
+        sendMessage()
+      }, 1000)
     }
   );
 
@@ -18,6 +20,9 @@ $(document).ready(function() {
     function(event) {
       if (event.which === 13 || event.keyCode === 13) {
         sendMessage();
+        setTimeout(function() {
+          sendMessage();
+        }, 1000);
       }
     }
   );
@@ -46,14 +51,22 @@ $(document).ready(function() {
 function sendMessage() {
   var textMessage = $('.write-message input').val();
 
+  // clono il template del messaggio
+  var cloneMessage = $('.template .message').clone();
+  // al messaggio clonato aggiungo un testo
+  cloneMessage.children('.message-text').text('Ciao :)');
+  // aggiungo la classe 'received-message'
+  cloneMessage.addClass('received-message');
+
   if (textMessage != '') {
     // clono il template del messaggio
     var cloneMessage = $('.template .message').clone();
     // al messaggio clonato aggiungo il testo dell'input
-    cloneMessage.find('.message-text').text(textMessage);
+    cloneMessage.children('.message-text').text(textMessage);
     // aggiungo la classe 'send-message'
     cloneMessage.addClass('send-message');
   }
+
 
   // inserire la data una volta inviato il messaggio
   var date = new Date();
@@ -72,6 +85,8 @@ function sendMessage() {
   // scrolal alla fine della finestra
   $('.chat-messages').scrollTop($('.chat-messages').height());
 }
+
+
 
 function addZeroToNumero(number) {
   if (number < 10) {
