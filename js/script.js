@@ -47,6 +47,31 @@ $(document).ready(function() {
 
 });
 
+// ricerca contatti
+// quando scrivo qualcos sull'input
+$('#input-search').keyup(function() {
+
+  // eseguo un ciclo
+  $('.chat-contact').each(function() {
+
+    // leggo il valore dell'input
+    var search = $('#input-search').val().toLowerCase();
+
+    // legge un elemento specifico del contenitore
+    var thisName = $(this).find('.name').text().toLowerCase();
+
+    // se questo elemento include quello che sta scritto nell'input
+    if (thisName.includes(search)) {
+      // viene mostrato
+      $(this).show();
+    } else {
+      // altrimenti viene nascosto
+      $(this).hide();
+    }
+
+  });
+});
+
 // funzione che invia messaggio
 function sendMessage() {
   var textMessage = $('.write-message input').val();
@@ -85,7 +110,6 @@ function sendMessage() {
   // scrolal alla fine della finestra
   $('.chat-messages').scrollTop($('.chat-messages').height());
 }
-
 
 
 function addZeroToNumero(number) {
