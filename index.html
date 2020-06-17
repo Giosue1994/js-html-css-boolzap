@@ -46,7 +46,10 @@
             <div class="profile-picture">
               <!-- immagine uguale al contatto selezionato -->
               <img src="img/avatar_1.jpg" alt="Profile picture">
-              <span class="name"> Michele<!-- nome uguale al contatto selezionato --> </span>
+            </div>
+
+            <div class="text">
+              <h3 class="name"> Michele<!-- nome uguale al contatto selezionato --> </h3>
               <span class="description">Ultimo accesso oggi alle 18:39</span>
             </div>
 
@@ -165,30 +168,51 @@
 
           <!-- SECTION-CHAT -->
           <section id="chat" class="chat section-chat">
-            <ul>
 
-            </ul>
+            <div class="chat-messages">
 
-            <div class="template">
-              <li class="your-message float-right"></li>
+              <div class="message send-message">
+                <span class="message-text">Ciao come va?</span>
+                <span class="message-time">14:00</span>
+              </div>
+
+              <div class="message received-message">
+                <span class="message-text">Tutto bene :)</span>
+                <span class="message-time">14:01</span>
+              </div>
+
+              <div class="template">
+                <div class="message">
+                  <span class="message-text"></span>
+                  <span class="message-time"></span>
+                </div>
+              </div>
+
             </div>
-          </section>
 
+          </section>
 
         </main>
 
         <!-- ________ FOOTER ________ -->
         <footer class="flex">
-          <a href="#"><i class="far fa-smile"></i></i></a>
+          <div class="icon-message">
+            <i class="far fa-smile"></i>
+          </div>
           <div class="write-message">
             <input type="text" placeholder="Scrivi un messaggio">
           </div>
-          <a class="send "href="#"><i class="fas fa-microphone"></i></a>
+
+          <div class="icon-message send-button">
+            <i class="fas fa-microphone"></i>
+          </div>
+
         </footer>
 
       </div>
 
     </div>
+
 
     <script src="js/script.js">
 
