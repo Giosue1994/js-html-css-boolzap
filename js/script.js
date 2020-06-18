@@ -63,69 +63,79 @@ $(document).ready(function() {
     }
   );
 
-});
 
-// ricerca contatti
-// quando scrivo qualcos sull'input
-$('#input-search').keyup(function() {
+  // ricerca contatti
+  // quando scrivo qualcos sull'input
+  $('#input-search').keyup(function() {
 
-  // eseguo un ciclo
-  $('.chat-contact').each(function() {
+    // eseguo un ciclo
+    $('.chat-contact').each(function() {
 
-    // leggo il valore dell'input
-    var search = $('#input-search').val().toLowerCase();
+      // leggo il valore dell'input
+      var search = $('#input-search').val().toLowerCase();
 
-    // legge un elemento specifico del contenitore
-    var thisName = $(this).find('.name').text().toLowerCase();
+      // legge un elemento specifico del contenitore
+      var thisName = $(this).find('.name').text().toLowerCase();
 
-    // se questo elemento include quello che sta scritto nell'input
-    if (thisName.includes(search)) {
-      // viene mostrato
-      $(this).show();
-    } else {
-      // altrimenti viene nascosto
-      $(this).hide();
-    }
+      // se questo elemento include quello che sta scritto nell'input
+      if (thisName.includes(search)) {
+        // viene mostrato
+        $(this).show();
+      } else {
+        // altrimenti viene nascosto
+        $(this).hide();
+      }
+
+    });
+  });
+
+  // mostra chat selezionata
+  $(document).on('click', '.chat-contact', function() {
+
+    // ottengo l'attributo di un immagine della chat
+    var profilePictureContact = $(this).find('img').attr('src');
+    // ottengo l'immagine del contatto
+    var profilePictureNav = $('.nav-chat .profile-picture').children('img');
+    // cambio il valore dell'attributo
+    profilePictureNav.attr('src', profilePictureContact);
+
+    // ottengo il nome leggendolo
+    var nameContact = $(this).find('.name').text();
+    // ottengo il nome da cambiare
+    var nameToChange = $('.nav-chat .text').children('.name');
+    // cambio il nome
+    nameToChange.text(nameContact);
+
+    // ottengo il valore di un solo 'chat-contact'
+    var chatContact = $(this);
+
+    // ottengo il nome dell'attributo di 'chat-contact'
+    var currentContact = $(this).attr("data-contact");
+    // ottengo la chat selezionata
+    var currentChat = '.chat-messages[data-chat="' + currentContact + '"]';
+
+    // se il 'chat-contact non è quello selezionato rimuovo la classe 'active
+    $('.chat-contact').not(chatContact).removeClass('active');
+    // se è quello selezionato la aggiungo
+    chatContact.addClass('active');
+
+    // rimuovo la classe 'visible'
+    $('.chat-messages').removeClass('visible');
+    // aggiungo la classe 'visible'
+    $(currentChat).addClass('visible');
 
   });
-});
 
-// mostra chat selezionata
-$(document).on('click', '.chat-contact', function() {
+  var lastAccess = $('.last-access');
 
-  // ottengo l'attributo di un immagine della chat
-  var profilePictureContact = $(this).find('img').attr('src');
-  // ottengo l'immagine del contatto
-  var profilePictureNav = $('.nav-chat .profile-picture').children('img');
-  // cambio il valore dell'attributo
-  profilePictureNav.attr('src', profilePictureContact);
+  var date = new Date();
+  var currentHours = date.getHours();
+  var currentMinutes = date.getMinutes();
+  var currentTime = addZeroToNumero(currentHours) + ':' + addZeroToNumero(currentMinutes);
 
-  // ottengo il nome leggendolo
-  var nameContact = $(this).find('.name').text();
-  // ottengo il nome da cambiare
-  var nameToChange = $('.nav-chat .text').children('.name');
-  // cambio il nome
-  nameToChange.text(nameContact);
-
-  // ottengo il valore di un solo 'chat-contact'
-  var chatContact = $(this);
-  // rimuovo la classe 'visible'
-  $('.chat-messages').removeClass('visible');
-  // aggiungo la classe 'visible'
-  $(currentChat).addClass('visible');
-
-  // ottengo il nome dell'attributo di 'chat-contact'
-  var currentContact = $(this).attr("data-contact");
-  // ottengo la chat selezionata
-  var currentChat = '.chat-messages[data-chat="' + currentContact + '"]';
-  // se il 'chat-contact non è quello selezionato rimuovo la classe 'active
-  $('.chat-contact').not(chatContact).removeClass('active');
-  // se è quello selezionato la aggiungo
-  chatContact.addClass('active');
-
+  lastAccess.text(currentTime);
 
 });
-
 
 ////////// FUNZIONI //////////
 
@@ -188,7 +198,7 @@ function receiveMessage () {
   $('.chat-messages.visible').scrollTop($('.chat-messages.visible').prop('scrollHeight'));
 }
 
-
+// FUNZIONE RITORNA UN NUMERO CON LO 0 D'AVANTI SE È MINORE DI 10
 function addZeroToNumero(number) {
   if (number < 10) {
     return '0' + number;
