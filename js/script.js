@@ -42,7 +42,7 @@ $(document).ready(function() {
     }
   );
 
-  // al click motro una dropdown per ogni messaggio
+  // al click mostro una dropdown per ogni messaggio
   $(document).on('click', '.message .message-info',
     function() {
 
@@ -90,30 +90,46 @@ $('#input-search').keyup(function() {
   });
 });
 
-// mostra chat
+// mostra chat selezionata
 $(document).on('click', '.chat-contact', function() {
+
+  // ottengo l'attributo di un immagine della chat
+  var profilePictureContact = $(this).find('img').attr('src');
+  // ottengo l'immagine del contatto
+  var profilePictureNav = $('.nav-chat .profile-picture').children('img');
+  // cambio il valore dell'attributo
+  profilePictureNav.attr('src', profilePictureContact);
+
+  // ottengo il nome leggendolo
+  var nameContact = $(this).find('.name').text();
+  // ottengo il nome da cambiare
+  var nameToChange = $('.nav-chat .text').children('.name');
+  // cambio il nome
+  nameToChange.text(nameContact);
 
   // ottengo il valore di un solo 'chat-contact'
   var chatContact = $(this);
+  // rimuovo la classe 'visible'
+  $('.chat-messages').removeClass('visible');
+  // aggiungo la classe 'visible'
+  $(currentChat).addClass('visible');
+
   // ottengo il nome dell'attributo di 'chat-contact'
   var currentContact = $(this).attr("data-contact");
   // ottengo la chat selezionata
   var currentChat = '.chat-messages[data-chat="' + currentContact + '"]';
-
   // se il 'chat-contact non è quello selezionato rimuovo la classe 'active
   $('.chat-contact').not(chatContact).removeClass('active');
   // se è quello selezionato la aggiungo
   chatContact.addClass('active');
 
-  // rimuovo la ckasse 'visible'
-  $('.chat-messages').removeClass('visible');
-  // aggiungo la classe 'visible'
-  $(currentChat).addClass('visible');
-  
+
 });
 
 
-// funzione che invia messaggio
+////////// FUNZIONI //////////
+
+// FUNZIONE INVIO DEL MESSAGGIO
 function sendMessage() {
   var textMessage = $('.write-message input').val();
 
@@ -135,19 +151,21 @@ function sendMessage() {
   cloneMessage.children('.message-time').text(currentTime);
 
   // alla chat appendo il messaggio clonato
-  $('.chat-messages').append(cloneMessage);
+  $('.chat-messages.visible').append(cloneMessage);
 
   // una volta inviato l'input ritorna vuota
   $('.write-message input').val('');
 
   // scrolal alla fine della finestra
-  $('.chat-messages').scrollTop($('.chat-messages').prop('scrollHeight'));
+  $('.chat-messages.visible').scrollTop($('.chat-messages.visible').prop('scrollHeight'));
 
   setTimeout(receiveMessage, 1000);
 }
 
-// funzione messaggio di risposta
+
+// FUNZIONE MESSAGGIO DI RISPOSTA
 function receiveMessage () {
+
   // clono il template del messaggio
   var cloneMessage = $('.template .message').clone();
   // al messaggio clonato aggiungo un testo
@@ -164,10 +182,10 @@ function receiveMessage () {
   cloneMessage.children('.message-time').text(currentTime);
 
   // alla chat appendo il messaggio clonato
-  $('.chat-messages').append(cloneMessage);
+  $('.chat-messages.visible').append(cloneMessage);
 
   // scrolal alla fine della finestra
-  $('.chat-messages').scrollTop($('.chat-messages').prop('scrollHeight'));
+  $('.chat-messages.visible').scrollTop($('.chat-messages.visible').prop('scrollHeight'));
 }
 
 

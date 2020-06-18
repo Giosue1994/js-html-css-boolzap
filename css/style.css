@@ -245,6 +245,11 @@ main {
   width: 100%;
   padding: 40px 80px;
   color: #d4d5d7;
+  display: none;
+}
+
+.chat-messages.visible {
+  display: block;
 }
 
 /* TEMPLATE */
