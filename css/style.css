@@ -253,10 +253,9 @@ main {
   max-width: 60%;
   min-width: 50px;
   display: inline-block;
-  padding: 10px 10px 10px 20px;
+  padding: 10px 60px 10px 10px;
   margin-top: 5px;
   border-radius: 10px;
-  word-break: break-all;
   clear: both;
 }
 .message.send-message {
@@ -268,9 +267,9 @@ main {
   float: left;
 }
 .message-time {
-  position: relative;
+  position: absolute;
   right: 0;
-  bottom: -7px;
+  bottom: 5px;
   font-size: 12px;
   color: #a3a3a3;
   padding: 0 10px;

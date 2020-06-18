@@ -38,7 +38,7 @@ $(document).ready(function() {
     function() {
       $('.send-button i').removeClass('fab fa-telegram-plane');
       $('.send-button i').addClass('fas fa-microphone');
-      
+
     }
   );
 
@@ -53,6 +53,13 @@ $(document).ready(function() {
       // se è quello successivo la mostro
       currentDropdown.toggleClass('hidden');
 
+    }
+  );
+
+  // al click elimino il messaggio
+  $(document).on('click', '.delete-message',
+    function() {
+      $(this).parents('.message').remove();
     }
   );
 
@@ -83,6 +90,27 @@ $('#input-search').keyup(function() {
   });
 });
 
+// mostra chat
+$(document).on('click', '.chat-contact', function() {
+
+  // ottengo il valore di un solo 'chat-contact'
+  var chatContact = $(this);
+  // ottengo il nome dell'attributo di 'chat-contact'
+  var currentContact = $(this).attr("data-contact");
+  // ottengo la chat selezionata
+  var currentChat = '.chat-messages[data-chat="' + currentContact + '"]';
+
+  // se il 'chat-contact non è quello selezionato rimuovo la classe 'active
+  $('.chat-contact').not(chatContact).removeClass('active');
+  // se è quello selezionato la aggiungo
+  chatContact.addClass('active');
+
+  // rimuovo la ckasse 'visible'
+  $('.chat-messages').removeClass('visible');
+  // aggiungo la classe 'visible'
+  $(currentChat).addClass('visible');
+  
+});
 
 
 // funzione che invia messaggio
@@ -113,7 +141,7 @@ function sendMessage() {
   $('.write-message input').val('');
 
   // scrolal alla fine della finestra
-  $('.chat-messages').scrollTop($('.chat-messages').height());
+  $('.chat-messages').scrollTop($('.chat-messages').prop('scrollHeight'));
 
   setTimeout(receiveMessage, 1000);
 }
@@ -139,7 +167,7 @@ function receiveMessage () {
   $('.chat-messages').append(cloneMessage);
 
   // scrolal alla fine della finestra
-  $('.chat-messages').scrollTop($('.chat-messages').height());
+  $('.chat-messages').scrollTop($('.chat-messages').prop('scrollHeight'));
 }
 
 
