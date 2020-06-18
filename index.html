@@ -97,7 +97,7 @@
             <!-- Contact Name -->
             <div class="contact-name">
 
-              <div class="chat-contact flex active">
+              <div data-contact="0" class="chat-contact flex active">
 
                 <div class="profile-picture">
                   <img src="img/avatar_1.jpg" alt="Profile picture">
@@ -114,7 +114,7 @@
 
               </div>
 
-              <div class="chat-contact flex">
+              <div data-contact="1" class="chat-contact flex">
 
                 <div class="profile-picture">
                   <img src="img/avatar_2.jpg" alt="Profile picture">
@@ -131,7 +131,7 @@
 
               </div>
 
-              <div class="chat-contact flex">
+              <div data-contact="2" class="chat-contact flex">
 
                 <div class="profile-picture">
                   <img src="img/avatar_3.jpg" alt="Profile picture">
@@ -148,7 +148,7 @@
 
               </div>
 
-              <div class="chat-contact flex">
+              <div data-contact="3" class="chat-contact flex">
 
                 <div class="profile-picture">
                   <img src="img/avatar_4.jpg" alt="Profile picture">
@@ -165,7 +165,7 @@
 
               </div>
 
-              <div class="chat-contact flex">
+              <div data-contact="4" class="chat-contact flex">
 
                 <div class="profile-picture">
                   <img src="img/avatar_5.jpg" alt="Profile picture">
@@ -182,7 +182,7 @@
 
               </div>
 
-              <div class="chat-contact flex">
+              <div data-contact="5" class="chat-contact flex">
 
                 <div class="profile-picture">
                   <img src="img/avatar_6.jpg" alt="Profile picture">
@@ -199,7 +199,7 @@
 
               </div>
 
-              <div class="chat-contact flex">
+              <div data-contact="6" class="chat-contact flex">
 
                 <div class="profile-picture">
                   <img src="img/avatar_7.jpg" alt="Profile picture">
@@ -216,7 +216,7 @@
 
               </div>
 
-              <div class="chat-contact flex">
+              <div data-contact="7" class="chat-contact flex">
 
                 <div class="profile-picture">
                   <img src="img/avatar_8.jpg" alt="Profile picture">
@@ -239,29 +239,48 @@
           <!-- SECTION-CHAT -->
           <section id="chat" class="chat section-chat">
 
-            <div class="chat-messages">
+            <!-- Chat-messages -->
+            <div data-chat="0" class="chat-messages visible">
 
               <div class="message send-message">
                 <span class="message-text">Ciao come va?</span>
                 <span class="message-time">14:00</span>
-                <span class="message-info"><i class="fas fa-angle-down"></i></span>
+                <span class="message-info hidden"><i class="fas fa-angle-down"></i></span>
+                <div class="dropdown hidden">
+                  <ul class="item-list">
+                    <li>Info messaggio</li>
+                    <li>Elimina messaggio</li>
+                  </ul>
+                </div>
               </div>
 
               <div class="message received-message">
                 <span class="message-text">Tutto bene :)</span>
                 <span class="message-time">14:01</span>
-                <span class="message-info"><i class="fas fa-angle-down"></i></span>
-              </div>
-
-              <!-- TEMPLATE -->
-              <div class="template">
-                <div class="message">
-                  <span class="message-text"></span>
-                  <span class="message-time"></span>
-                  <span class="message-info"><i class="fas fa-angle-down"></i></span>
+                <span class="message-info hidden"><i class="fas fa-angle-down"></i></span>
+                <div class="dropdown hidden">
+                  <ul class="item-list">
+                    <li>Info messaggio</li>
+                    <li>Elimina messaggio</li>
+                  </ul>
                 </div>
               </div>
 
+            </div>
+
+            <!-- TEMPLATE -->
+            <div class="template hidden">
+              <div class="message">
+                <span class="message-text"></span>
+                <span class="message-time"></span>
+                <span class="message-info hidden"><i class="fas fa-angle-down"></i></span>
+                <div class="dropdown hidden">
+                  <ul class="item-list">
+                    <li>Info messaggio</li>
+                    <li>Elimina messaggio</li>
+                  </ul>
+                </div>
+              </div>
             </div>
 
           </section>

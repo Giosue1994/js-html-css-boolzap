@@ -61,6 +61,15 @@ ul {
 a {
   text-decoration: none;
 }
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
 /* ________ HEADER ________ */
 header {
   height: 80px;
@@ -229,18 +238,16 @@ main {
   background-size: cover;
 }
 
+/* Chat-messages */
 .chat-messages {
   overflow-y: auto;
   height: 100%;
   width: 100%;
   padding: 40px 80px;
+  color: #d4d5d7;
 }
 
 /* TEMPLATE */
-.template {
-  display: none;
-}
-
 .message {
   position: relative;
   max-width: 60%;
@@ -250,10 +257,8 @@ main {
   margin-top: 5px;
   border-radius: 10px;
   word-break: break-all;
-  color: #d4d5d7;
   clear: both;
 }
-
 .message.send-message {
   background-color: #004840;
   float: right;
@@ -262,7 +267,6 @@ main {
   background-color: #1e2e35;
   float: left;
 }
-
 .message-time {
   position: relative;
   right: 0;
@@ -271,13 +275,35 @@ main {
   color: #a3a3a3;
   padding: 0 10px;
 }
-
 .message-info {
-  position: relative;
-  right: 0;
-  bottom: 0;
+  position: absolute;
+  right: 8px;
+  top: 0;
   font-size: 23px;
   color: #a3a3a3;
+  cursor: pointer;
+}
+.message:hover .message-info {
+  display: inline-block;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  background-color: #213137;
+  padding: 10px 0;
+  box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.5);
+  cursor: pointer;
+  white-space: nowrap;
+  z-index: 2333;
+}
+.dropdown ul li {
+  padding: 10px 20px;
+}
+.dropdown ul li:hover {
+  background-color: #1c2c33;
 }
 
 /* ________ FOOTER ________ */

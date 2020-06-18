@@ -8,9 +8,7 @@ $(document).ready(function() {
       $('.send-button i').removeClass('fas fa-microphone');
       $('.send-button i').addClass('fab fa-telegram-plane');
       sendMessage();
-      setTimeout(function() {
-        sendMessage()
-      }, 1000)
+
     }
   );
 
@@ -20,9 +18,7 @@ $(document).ready(function() {
     function(event) {
       if (event.which === 13 || event.keyCode === 13) {
         sendMessage();
-        setTimeout(function() {
-          sendMessage();
-        }, 1000);
+
       }
     }
   );
@@ -42,6 +38,21 @@ $(document).ready(function() {
     function() {
       $('.send-button i').removeClass('fab fa-telegram-plane');
       $('.send-button i').addClass('fas fa-microphone');
+      
+    }
+  );
+
+  // al click motro una dropdown per ogni messaggio
+  $(document).on('click', '.message .message-info',
+    function() {
+
+      // ottengo il fratello successivo di 'message-info'
+      var currentDropdown = $(this).next('.dropdown');
+      // se non è il fratello successivo nascondo la dropdown
+      $('.dropdown').not(currentDropdown).addClass('hidden');
+      // se è quello successivo la mostro
+      currentDropdown.toggleClass('hidden');
+
     }
   );
 
@@ -72,16 +83,11 @@ $('#input-search').keyup(function() {
   });
 });
 
+
+
 // funzione che invia messaggio
 function sendMessage() {
   var textMessage = $('.write-message input').val();
-
-  // clono il template del messaggio
-  var cloneMessage = $('.template .message').clone();
-  // al messaggio clonato aggiungo un testo
-  cloneMessage.children('.message-text').text('Ciao :)');
-  // aggiungo la classe 'received-message'
-  cloneMessage.addClass('received-message');
 
   if (textMessage != '') {
     // clono il template del messaggio
@@ -91,7 +97,6 @@ function sendMessage() {
     // aggiungo la classe 'send-message'
     cloneMessage.addClass('send-message');
   }
-
 
   // inserire la data una volta inviato il messaggio
   var date = new Date();
@@ -106,6 +111,32 @@ function sendMessage() {
 
   // una volta inviato l'input ritorna vuota
   $('.write-message input').val('');
+
+  // scrolal alla fine della finestra
+  $('.chat-messages').scrollTop($('.chat-messages').height());
+
+  setTimeout(receiveMessage, 1000);
+}
+
+// funzione messaggio di risposta
+function receiveMessage () {
+  // clono il template del messaggio
+  var cloneMessage = $('.template .message').clone();
+  // al messaggio clonato aggiungo un testo
+  cloneMessage.children('.message-text').text('Ciao :)');
+  // aggiungo la classe 'received-message'
+  cloneMessage.addClass('received-message');
+
+  // inserire la data una volta inviato il messaggio
+  var date = new Date();
+  var currentHours = date.getHours();
+  var currentMinutes = date.getMinutes();
+  var currentTime = addZeroToNumero(currentHours) + ':' + addZeroToNumero(currentMinutes);
+
+  cloneMessage.children('.message-time').text(currentTime);
+
+  // alla chat appendo il messaggio clonato
+  $('.chat-messages').append(cloneMessage);
 
   // scrolal alla fine della finestra
   $('.chat-messages').scrollTop($('.chat-messages').height());
