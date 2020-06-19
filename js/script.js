@@ -12,7 +12,9 @@ $(document).ready(function() {
     function(event) {
       if (event.which === 13 || event.keyCode === 13) {
         sendMessage();
+
       }
+
     }
   );
 
@@ -74,6 +76,7 @@ $(document).ready(function() {
   $(document).on('click', '.delete-message',
     function() {
       $(this).parents('.message').remove();
+
     }
   );
 
@@ -145,6 +148,11 @@ $(document).ready(function() {
     // aggiungo la classe 'visible'
     $(currentChat).addClass('visible');
 
+    // rimuovo la classe 'visible'
+    $('.chat-contact .description').removeClass('visible');
+    // aggiungo la classe 'visible'
+    $(this).find('.description').addClass('visible');
+
   });
 
   var lastAccess = $('.last-access');
@@ -190,7 +198,9 @@ function sendMessage() {
   // scrolal alla fine della finestra
   $('.chat-messages.visible').scrollTop($('.chat-messages.visible').prop('scrollHeight'));
 
-  setTimeout(receiveMessage, 1000);
+
+  setTimeout(receiveMessage, getRandomIntInclusive(1000, 10000));
+
 }
 
 
@@ -200,9 +210,15 @@ function receiveMessage () {
   // clono il template del messaggio
   var cloneMessage = $('.template .message').clone();
   // al messaggio clonato aggiungo un testo
-  cloneMessage.children('.message-text').text('Ciao :)');
+  cloneMessage.children('.message-text').text(randomMessage());
   // aggiungo la classe 'received-message'
   cloneMessage.addClass('received-message');
+
+  // il messaggio ricevuto verrà mostrato nella lista contatti
+  var newAnswer = cloneMessage.children('.message-text').text();
+  var answer = $('.container').children('main').find('.text .description.visible');
+  answer.text(newAnswer);
+
 
   // inserire la data una volta inviato il messaggio
   var date = new Date();
@@ -217,6 +233,7 @@ function receiveMessage () {
 
   // scrolal alla fine della finestra
   $('.chat-messages.visible').scrollTop($('.chat-messages.visible').prop('scrollHeight'));
+
 }
 
 // FUNZIONE RITORNA UN NUMERO CON LO 0 D'AVANTI SE È MINORE DI 10
@@ -226,4 +243,39 @@ function addZeroToNumero(number) {
   }
 
   return number;
+}
+
+// FUNZIONE CHE GENERA NUMERO RANDOM
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// FUNZIONE CHE GENERA UN MESAGGIO CASUALE
+function randomMessage() {
+  var listMessage = [
+    'Che bello risentirti',
+    'Ehi come va?',
+    'Ciao!',
+    'Grazie',
+    'Ok',
+    ':D',
+    'Tu?',
+    'Va bene',
+    'Che bello',
+    'Molto bene',
+    'Lo scienziato non è l’uomo che fornisce le vere risposte; è quello che pone le vere domande.',
+    'Da qualche parte, qualcosa di incredibile è in attesa di essere scoperto.',
+    'La Natura compone alcune delle sue poesie più belle davanti al microscopio e al telescopio.',
+    'La più bella e profonda emozione che possiamo provare è il senso del mistero; sta qui il seme di ogni arte, di ogni vera scienza.',
+    'Milioni di persone hanno visto la caduta della mela, ma Newton è stato colui che ha chiesto “perché”.',
+    'Se qualcosa non può essere espresso in numeri non è scienza: è opinione.',
+    'Le verità scientifiche non si decidono a maggioranza.',
+    'La scienza è ricerca della verità. Ma la verità non è verità certa.',
+    'L’ignoranza afferma o nega rotondamente; la scienza dubita.',
+    'La scienza è il grande antidoto contro il veleno dell’entusiasmo e della superstizione.'
+  ];
+
+  return listMessage[getRandomIntInclusive(0, listMessage.length)];
 }

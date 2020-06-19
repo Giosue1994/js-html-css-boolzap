@@ -269,6 +269,7 @@ main {
   padding: 0 15px;
   justify-content: space-between;
   background-color: #0b1d24;
+  height: 100px;
 }
 .section-contact .contact-name .chat-contact.active {
   background-color: #1c2c32;
@@ -282,6 +283,8 @@ main {
 .section-contact .contact-name .text {
   padding: 20px 20px 20px 0;
   flex-grow: 1;
+  flex-direction: column;
+  align-self: center;
 }
 .section-contact .contact-name .text .name {
   position: relative;
@@ -289,9 +292,10 @@ main {
   color: #a3a3a3;
 }
 .section-contact .contact-name .text .description {
-  padding-top: 5px;
-  display: block;
   color: #7d7d7d;
+}
+.section-contact .contact-name .text .description.visible {
+  display: block;
 }
 
 .section-contact .contact-name .hour {
