@@ -1,46 +1,38 @@
 $(document).ready(function() {
 
-  // quando clicco sulla classe 'send-button' rimuovo l'icona
-  // del microfono ed aggiungo l'icona invia e stampo
-  // il messaggio
+  // quando clicco sulla classe 'send-button' stampo il messaggio
   $('.send-button').click(
     function() {
-      $('.send-button i').removeClass('fas fa-microphone');
-      $('.send-button i').addClass('fab fa-telegram-plane');
       sendMessage();
-
     }
   );
 
-  // quando c'è una classe 'write-message input'  e clicco
-  // il tasto invia della tastiera,, mostro il messaggio
+  // al click del tasto invia sull'unput, mostro il messaggio
   $('.write-message input').keydown(
     function(event) {
       if (event.which === 13 || event.keyCode === 13) {
         sendMessage();
-
       }
     }
   );
 
-  // quando clicco sulla classe 'write-message input' rimuovo l'icona
-  // invia ed aggiungo l'icona del microfono
-  $('.write-message input').click(
+  // quando clicco sull'input rimuovo l'icona
+  // microfono ed aggiungo l'icona invia
+  $('.write-message input').focus (
     function() {
       $('.send-button i').removeClass('fas fa-microphone');
       $('.send-button i').addClass('fab fa-telegram-plane');
     }
   );
-
-  // quando clicco sulla classe 'chat-messages' rimuovo l'icona
+  // quando clicco su qualsiasi parte della pagina rimuovo l'icona
   // invia ed aggiungo l'icona del microfono
-  $('.chat-messages').click(
+  $('.write-message input').blur (
     function() {
       $('.send-button i').removeClass('fab fa-telegram-plane');
       $('.send-button i').addClass('fas fa-microphone');
-
     }
   );
+
 
   // al click mostro una dropdown per ogni messaggio
   $(document).on('click', '.message .message-info',
@@ -56,10 +48,39 @@ $(document).ready(function() {
     }
   );
 
+  // al click mostro una dropdown per ogni chat
+  $(document).on('click', '.chat-info i',
+    function() {
+
+      // ottengo il fratello successivo di 'message-info'
+      var dropdownInfo = $(this).next('.dropdown');
+      // se non è il fratello successivo nascondo la dropdown
+      $('.dropdown').not(dropdownInfo).addClass('hidden');
+      // se è quello successivo la mostro
+      dropdownInfo.toggleClass('hidden');
+
+    }
+  );
+
+  // quando clicco su qualsiasi parte della pagina rimuovo l'icona
+  // invia ed aggiungo l'icona del microfono
+  $('.wrapper').click (
+    function() {
+      $('.dropdown').addClass('hidden');
+    }
+  );
+
   // al click elimino il messaggio
   $(document).on('click', '.delete-message',
     function() {
       $(this).parents('.message').remove();
+    }
+  );
+
+  // al click elimino la chat
+  $(document).on('click', '.chat-info .delete-message',
+    function() {
+      $(this).parents('.container').children('main').find('.chat-messages.visible .message').remove();
     }
   );
 
@@ -92,6 +113,7 @@ $(document).ready(function() {
   // mostra chat selezionata
   $(document).on('click', '.chat-contact', function() {
 
+    // quando clicco su un contatto cambio l'immagine del profilo e il nome della chat
     // ottengo l'attributo di un immagine della chat
     var profilePictureContact = $(this).find('img').attr('src');
     // ottengo l'immagine del contatto
@@ -106,18 +128,17 @@ $(document).ready(function() {
     // cambio il nome
     nameToChange.text(nameContact);
 
-    // ottengo il valore di un solo 'chat-contact'
-    var chatContact = $(this);
 
-    // ottengo il nome dell'attributo di 'chat-contact'
+    // se il contatto nella lista non è quello selezionato rimuovo la classe 'active'
+    $('.chat-contact').not($(this)).removeClass('active');
+    // se è quello selezionato la aggiungo
+    $(this).addClass('active');
+
+
+    // ottengo il nome dell'attributo di un contatto nella lista
     var currentContact = $(this).attr("data-contact");
     // ottengo la chat selezionata
     var currentChat = '.chat-messages[data-chat="' + currentContact + '"]';
-
-    // se il 'chat-contact non è quello selezionato rimuovo la classe 'active
-    $('.chat-contact').not(chatContact).removeClass('active');
-    // se è quello selezionato la aggiungo
-    chatContact.addClass('active');
 
     // rimuovo la classe 'visible'
     $('.chat-messages').removeClass('visible');

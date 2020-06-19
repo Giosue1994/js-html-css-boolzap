@@ -70,6 +70,65 @@ a {
   display: block;
 }
 
+/* TEMPLATE */
+.message {
+  position: relative;
+  max-width: 60%;
+  min-width: 50px;
+  display: inline-block;
+  padding: 10px 60px 10px 10px;
+  margin-top: 5px;
+  border-radius: 10px;
+  clear: both;
+}
+.message.send-message {
+  background-color: #004840;
+  float: right;
+}
+.message.received-message {
+  background-color: #1e2e35;
+  float: left;
+}
+.message-time {
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  font-size: 12px;
+  color: #a3a3a3;
+  padding: 0 10px;
+}
+.message-info {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  font-size: 23px;
+  color: #a3a3a3;
+  cursor: pointer;
+}
+.message:hover .message-info {
+  display: block;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  background-color: #213137;
+  padding: 10px 0;
+  box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.5);
+  cursor: pointer;
+  white-space: nowrap;
+  z-index: 2333;
+  color: #b0b0b0;
+}
+.dropdown ul li {
+  padding: 10px 20px;
+}
+.dropdown ul li:hover {
+  background-color: #1c2c33;
+}
+
 /* ________ HEADER ________ */
 header {
   height: 80px;
@@ -97,9 +156,22 @@ header {
   font-size: 25px;
   margin-right: 20px;
   line-height: 2.6;
+  position: relative;
 }
-.nav .settings .menu-icons li a {
+.nav .settings .menu-icons li i {
   color: #b0b0b0;
+  cursor: pointer;
+}
+
+.nav .settings .dropdown {
+  top: 90%;
+  right: 0;
+}
+
+.nav .settings .dropdown ul li {
+  font-size: 18px;
+  display: block;
+  margin-right: 0;
 }
 
 /* NAV CHAT */
@@ -165,12 +237,13 @@ main {
 .section-contact .search-bar .search-or-start {
   background-color: #0b1d24;
 }
-.section-contact .search-bar .search-or-start a {
+.section-contact .search-bar .search-or-start span {
   font-size: 25px;
   vertical-align: middle;
   margin: 0 15px;
   color: #b0b0b0;
   align-self: center;
+  cursor: pointer;
 }
 .section-contact .search-bar .search-or-start input {
   font-size: 16px;
@@ -250,64 +323,6 @@ main {
 
 .chat-messages.visible {
   display: block;
-}
-
-/* TEMPLATE */
-.message {
-  position: relative;
-  max-width: 60%;
-  min-width: 50px;
-  display: inline-block;
-  padding: 10px 60px 10px 10px;
-  margin-top: 5px;
-  border-radius: 10px;
-  clear: both;
-}
-.message.send-message {
-  background-color: #004840;
-  float: right;
-}
-.message.received-message {
-  background-color: #1e2e35;
-  float: left;
-}
-.message-time {
-  position: absolute;
-  right: 0;
-  bottom: 5px;
-  font-size: 12px;
-  color: #a3a3a3;
-  padding: 0 10px;
-}
-.message-info {
-  position: absolute;
-  right: 8px;
-  top: 0;
-  font-size: 23px;
-  color: #a3a3a3;
-  cursor: pointer;
-}
-.message:hover .message-info {
-  display: inline-block;
-}
-
-/* DROPDOWN */
-.dropdown {
-  position: absolute;
-  top: 30px;
-  right: 10px;
-  background-color: #213137;
-  padding: 10px 0;
-  box-shadow: 0px 0px 16px 2px rgba(0,0,0,0.5);
-  cursor: pointer;
-  white-space: nowrap;
-  z-index: 2333;
-}
-.dropdown ul li {
-  padding: 10px 20px;
-}
-.dropdown ul li:hover {
-  background-color: #1c2c33;
 }
 
 /* ________ FOOTER ________ */
