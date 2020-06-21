@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+  // ora corrente ultimo accesso
+  var lastAccess = $('.last-access');
+  lastAccess.text(currentTime());
+
   // quando clicco sulla classe 'send-button' stampo il messaggio
   $('.send-button').click(
     function() {
@@ -155,16 +159,8 @@ $(document).ready(function() {
 
   });
 
-  var lastAccess = $('.last-access');
-
-  var date = new Date();
-  var currentHours = date.getHours();
-  var currentMinutes = date.getMinutes();
-  var currentTime = addZeroToNumero(currentHours) + ':' + addZeroToNumero(currentMinutes);
-
-  lastAccess.text(currentTime);
-
 });
+
 
 ////////// FUNZIONI //////////
 
@@ -179,15 +175,14 @@ function sendMessage() {
     cloneMessage.children('.message-text').text(textMessage);
     // aggiungo la classe 'send-message'
     cloneMessage.addClass('send-message');
+
   }
 
-  // inserire la data una volta inviato il messaggio
-  var date = new Date();
-  var currentHours = date.getHours();
-  var currentMinutes = date.getMinutes();
-  var currentTime = addZeroToNumero(currentHours) + ':' + addZeroToNumero(currentMinutes);
 
+  // inserire l'ora una volta inviato il messaggio
+  currentTime();
   cloneMessage.children('.message-time').text(currentTime);
+
 
   // alla chat appendo il messaggio clonato
   $('.chat-messages.visible').append(cloneMessage);
@@ -195,11 +190,18 @@ function sendMessage() {
   // una volta inviato l'input ritorna vuota
   $('.write-message input').val('');
 
-  // scrolal alla fine della finestra
+  // scrolla alla fine della finestra
   $('.chat-messages.visible').scrollTop($('.chat-messages.visible').prop('scrollHeight'));
 
+  setTimeout(function() {
+    var typing = $('.nav-chat .description').text('Sta scrivendo...');
 
-  setTimeout(receiveMessage, getRandomIntInclusive(1000, 10000));
+    // tempo di ricezione del messaggio
+    setTimeout(receiveMessage, getRandomIntInclusive(1000, 10000));
+
+
+  },getRandomIntInclusive(1000, 3000));
+
 
 }
 
@@ -220,20 +222,29 @@ function receiveMessage () {
   answer.text(newAnswer);
 
 
-  // inserire la data una volta inviato il messaggio
-  var date = new Date();
-  var currentHours = date.getHours();
-  var currentMinutes = date.getMinutes();
-  var currentTime = addZeroToNumero(currentHours) + ':' + addZeroToNumero(currentMinutes);
-
+  // inserire l'ora una volta ricevuto il messaggio
+  currentTime();
   cloneMessage.children('.message-time').text(currentTime);
 
   // alla chat appendo il messaggio clonato
   $('.chat-messages.visible').append(cloneMessage);
 
-  // scrolal alla fine della finestra
+  // scrolla alla fine della finestra
   $('.chat-messages.visible').scrollTop($('.chat-messages.visible').prop('scrollHeight'));
 
+  // contatto online una volta ricevuto il messaggio
+  var typing = $('.nav-chat .description').text('Online');
+}
+
+// FUNZIONE ORA CORRENTE
+function currentTime() {
+
+  var date = new Date();
+  var currentHours = date.getHours();
+  var currentMinutes = date.getMinutes();
+  var currentTime = addZeroToNumero(currentHours) + ':' + addZeroToNumero(currentMinutes);
+
+  return currentTime;
 }
 
 // FUNZIONE RITORNA UN NUMERO CON LO 0 D'AVANTI SE È MINORE DI 10
