@@ -169,7 +169,8 @@ header {
 }
 
 .nav .settings .dropdown ul li {
-  font-size: 18px;
+  font-size: 16px;
+  line-height: 1.5;
   display: block;
   margin-right: 0;
 }
@@ -269,10 +270,12 @@ main {
   padding: 0 15px;
   justify-content: space-between;
   background-color: #0b1d24;
-
+}
+.section-contact .contact-name .chat-contact:hover {
+  background-color: #1e272b;
 }
 .section-contact .contact-name .chat-contact.active {
-  background-color: #1c2c32;
+  background-color: #2c3134;
 }
 
 .section-contact .contact-name .profile-picture {
@@ -299,12 +302,17 @@ main {
   display: block;
 }
 
-.section-contact .contact-name .hour span {
+.section-contact .contact-name .hour {
   position: relative;
   right: 0;
   top: 20%;
   font-size: 15px;
   color: #a3a3a3;
+}
+.section-contact .contact-name .hour .last-message-hour {
+  position: absolute;
+  right: 0;
+  top: 20%;
 }
 
 /* SECTION CHAT */

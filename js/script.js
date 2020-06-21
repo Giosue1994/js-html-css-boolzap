@@ -1,27 +1,32 @@
 $(document).ready(function() {
 
+  //////////////////////////////////////////////////////////////////////
   // ora corrente ultimo accesso
   var lastAccess = $('.last-access');
   lastAccess.text(currentTime());
 
+  //////////////////////////////////////////////////////////////////////
   // quando clicco sulla classe 'send-button' stampo il messaggio
   $('.send-button').click(
     function() {
       sendMessage();
+      timeResponse()
     }
   );
 
+  //////////////////////////////////////////////////////////////////////
   // al click del tasto invia sull'unput, mostro il messaggio
   $('.write-message input').keydown(
     function(event) {
       if (event.which === 13 || event.keyCode === 13) {
         sendMessage();
-
+        timeResponse();
       }
 
     }
   );
 
+  //////////////////////////////////////////////////////////////////////
   // quando clicco sull'input rimuovo l'icona
   // microfono ed aggiungo l'icona invia
   $('.write-message input').focus (
@@ -39,7 +44,7 @@ $(document).ready(function() {
     }
   );
 
-
+  //////////////////////////////////////////////////////////////////////
   // al click mostro una dropdown per ogni messaggio
   $(document).on('click', '.message .message-info',
     function() {
@@ -54,6 +59,7 @@ $(document).ready(function() {
     }
   );
 
+  //////////////////////////////////////////////////////////////////////
   // al click mostro una dropdown per ogni chat
   $(document).on('click', '.chat-info i',
     function() {
@@ -68,6 +74,7 @@ $(document).ready(function() {
     }
   );
 
+  //////////////////////////////////////////////////////////////////////
   // quando clicco su qualsiasi parte della pagina rimuovo l'icona
   // invia ed aggiungo l'icona del microfono
   $('.wrapper').click (
@@ -76,6 +83,7 @@ $(document).ready(function() {
     }
   );
 
+  //////////////////////////////////////////////////////////////////////
   // al click elimino il messaggio
   $(document).on('click', '.delete-message',
     function() {
@@ -84,6 +92,7 @@ $(document).ready(function() {
     }
   );
 
+  //////////////////////////////////////////////////////////////////////
   // al click elimino la chat
   $(document).on('click', '.chat-info .delete-message',
     function() {
@@ -91,7 +100,7 @@ $(document).ready(function() {
     }
   );
 
-
+  //////////////////////////////////////////////////////////////////////
   // ricerca contatti
   // quando scrivo qualcos sull'input
   $('#input-search').keyup(function() {
@@ -117,6 +126,7 @@ $(document).ready(function() {
     });
   });
 
+  //////////////////////////////////////////////////////////////////////
   // mostra chat selezionata
   $(document).on('click', '.chat-contact', function() {
 
@@ -157,12 +167,18 @@ $(document).ready(function() {
     // aggiungo la classe 'visible'
     $(this).find('.description').addClass('visible');
 
+    // rimuovo la classe 'visible'
+    $('.chat-contact .last-message-hour').removeClass('visible');
+    // aggiungo la classe 'visible'
+    $(this).find('.last-message-hour').addClass('visible');
+
   });
 
 });
 
 
 ////////// FUNZIONI //////////
+//////////////////////////////////////////////////////////////////////
 
 // FUNZIONE INVIO DEL MESSAGGIO
 function sendMessage() {
@@ -193,19 +209,10 @@ function sendMessage() {
   // scrolla alla fine della finestra
   $('.chat-messages.visible').scrollTop($('.chat-messages.visible').prop('scrollHeight'));
 
-  setTimeout(function() {
-    var typing = $('.nav-chat .description').text('Sta scrivendo...');
-
-    // tempo di ricezione del messaggio
-    setTimeout(receiveMessage, getRandomIntInclusive(1000, 10000));
-
-
-  },getRandomIntInclusive(1000, 3000));
-
 
 }
 
-
+//////////////////////////////////////////////////////////////////////
 // FUNZIONE MESSAGGIO DI RISPOSTA
 function receiveMessage () {
 
@@ -221,10 +228,13 @@ function receiveMessage () {
   var answer = $('.container').children('main').find('.text .description.visible');
   answer.text(newAnswer);
 
-
   // inserire l'ora una volta ricevuto il messaggio
-  currentTime();
-  cloneMessage.children('.message-time').text(currentTime);
+  cloneMessage.children('.message-time').text(currentTime());
+
+  // ora corrente ultimo messaggio
+  var lastMessage = $('.last-message-hour.visible');
+  console.log(lastMessage.text());
+  lastMessage.text(currentTime());
 
   // alla chat appendo il messaggio clonato
   $('.chat-messages.visible').append(cloneMessage);
@@ -236,6 +246,21 @@ function receiveMessage () {
   var typing = $('.nav-chat .description').text('Online');
 }
 
+//////////////////////////////////////////////////////////////////////
+// FUNZIONE TEMPO RICEZIONE MESSAGGIO
+function timeResponse() {
+  // compare la scritta 'sta scrivendo...' quando il messaggio sta per essere ricevuto
+  setTimeout(function() {
+    var typing = $('.nav-chat .description').text('Sta scrivendo...');
+
+    // tempo di ricezione del messaggio
+    setTimeout(receiveMessage, getRandomIntInclusive(1000, 10000));
+
+  },getRandomIntInclusive(1000, 3000));
+  
+}
+
+//////////////////////////////////////////////////////////////////////
 // FUNZIONE ORA CORRENTE
 function currentTime() {
 
@@ -247,6 +272,7 @@ function currentTime() {
   return currentTime;
 }
 
+//////////////////////////////////////////////////////////////////////
 // FUNZIONE RITORNA UN NUMERO CON LO 0 D'AVANTI SE È MINORE DI 10
 function addZeroToNumero(number) {
   if (number < 10) {
@@ -256,6 +282,7 @@ function addZeroToNumero(number) {
   return number;
 }
 
+//////////////////////////////////////////////////////////////////////
 // FUNZIONE CHE GENERA NUMERO RANDOM
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
@@ -263,6 +290,7 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+//////////////////////////////////////////////////////////////////////
 // FUNZIONE CHE GENERA UN MESAGGIO CASUALE
 function randomMessage() {
   var listMessage = [
