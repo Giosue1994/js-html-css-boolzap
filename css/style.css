@@ -89,6 +89,16 @@ a {
   background-color: #1e2e35;
   float: left;
 }
+.message-special {
+  position: absolute;
+  right: 42px;
+  bottom: 7px;
+  font-size: 11px;
+  color: #a3a3a3;
+}
+.message-special.visible {
+  display: block;
+}
 .message-time {
   position: absolute;
   right: 0;

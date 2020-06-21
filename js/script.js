@@ -131,6 +131,20 @@ $(document).ready(function() {
     }
   );
 
+  //////////////////////////////////////////////////////////////////////
+  // al click segno un messaggio come importante
+  $(document).on('click', '.message.active .special',
+    function() {
+      $(this).parents('.container').children('main').find('.message.active .message-special').toggleClass('visible');
+
+      if ($('.message-special').hasClass('visible')) {
+        $(this).text('Messaggio non importante');
+      } else {
+        $(this).text('Messaggio importante');
+      }
+    }
+  );
+
 
   //////////////////////////////////////////////////////////////////////
   // ricerca contatti
