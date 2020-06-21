@@ -60,6 +60,21 @@ $(document).ready(function() {
   );
 
   //////////////////////////////////////////////////////////////////////
+  // al click mostro una dropdown per ogni messaggio
+  $(document).on('click', '.contact-info',
+    function() {
+
+      // ottengo il fratello successivo di 'message-info'
+      var currentDropdown = $(this).next('.dropdown');
+      // se non è il fratello successivo nascondo la dropdown
+      $('.dropdown').not(currentDropdown).addClass('hidden');
+      // se è quello successivo la mostro
+      currentDropdown.toggleClass('hidden');
+
+    }
+  );
+
+  //////////////////////////////////////////////////////////////////////
   // al click mostro una dropdown per ogni chat
   $(document).on('click', '.chat-info i',
     function() {
@@ -93,12 +108,29 @@ $(document).ready(function() {
   );
 
   //////////////////////////////////////////////////////////////////////
-  // al click elimino la chat
-  $(document).on('click', '.chat-info .delete-message',
+  // al click elimino i messaggi della chat
+  $(document).on('click', '.chat-info .delete-messages',
     function() {
       $(this).parents('.container').children('main').find('.chat-messages.visible .message').remove();
     }
   );
+
+  //////////////////////////////////////////////////////////////////////
+  // al click elimino la chat
+  $(document).on('click', '.delete-chat',
+    function() {
+      $(this).parents('.chat-contact').remove();
+      $('.chat-messages.visible').remove();
+    }
+  );
+
+  $(document).on('click', '.nav-chat .delete-chat',
+    function() {
+      $(this).parents('.container').children('main').find('.chat-contact.active').remove();
+      $('.chat-messages.visible').remove();
+    }
+  );
+
 
   //////////////////////////////////////////////////////////////////////
   // ricerca contatti
@@ -233,7 +265,6 @@ function receiveMessage () {
 
   // ora corrente ultimo messaggio
   var lastMessage = $('.last-message-hour.visible');
-  console.log(lastMessage.text());
   lastMessage.text(currentTime());
 
   // alla chat appendo il messaggio clonato
@@ -257,7 +288,7 @@ function timeResponse() {
     setTimeout(receiveMessage, getRandomIntInclusive(1000, 10000));
 
   },getRandomIntInclusive(1000, 3000));
-  
+
 }
 
 //////////////////////////////////////////////////////////////////////

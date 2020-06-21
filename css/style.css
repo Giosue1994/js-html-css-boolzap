@@ -270,6 +270,7 @@ main {
   padding: 0 15px;
   justify-content: space-between;
   background-color: #0b1d24;
+  position: relative;
 }
 .section-contact .contact-name .chat-contact:hover {
   background-color: #1e272b;
@@ -313,6 +314,22 @@ main {
   position: absolute;
   right: 0;
   top: 20%;
+}
+
+.section-contact .contact-name .contact-info {
+  position: absolute;
+  right: 20px;
+  top: 40%;
+  font-size: 28px;
+  color: #a3a3a3;
+  cursor: pointer;
+}
+.section-contact .contact-name .chat-contact:hover .contact-info {
+  display: block;
+}
+.section-contact .contact-name .dropdown {
+  top: 70%;
+  right: 20px;;
 }
 
 /* SECTION CHAT */
